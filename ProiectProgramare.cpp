@@ -3,21 +3,10 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include "job.hpp"
 
 using namespace std;
 
-struct Job {
-    int id;
-    string title;
-    vector<string> skills;
-};
-
-struct Application {
-    int jobId;
-    string applicantName;
-};
-
-// Funcții
 vector<Job> loadJobs(const string& filename) {
     vector<Job> jobs;
     ifstream file(filename);
@@ -72,7 +61,6 @@ void applyForJob(const string& filename, int jobId, const string& applicantName)
     }
 }
 
-// Funcția principală
 int main() {
     vector<Job> jobs = loadJobs("jobs.txt");
 
