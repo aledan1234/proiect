@@ -1,2 +1,6 @@
-1 Theranos cto 7 3 management c++ communication 
-4 Theranos cto 6 3 management c++ communication 
+1 Theranos cto 7 3 management c++ ai 
+4 Qheranos ceo 88 3 management c++ ai 
+5 Heranos cto 6 1 java 
+6 Keranos cto 72 2 java coding 
+7 Neranos cto 2 1 python 
+776 Corporation frontend 2 1 javascript 

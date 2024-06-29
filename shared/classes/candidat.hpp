@@ -11,18 +11,16 @@ private:
     string nume;
     int varsta;
     int experienta;
-    int nrAplicatii;
     vector<int> aplicatiiId;
 public:
     Candidat();
 
-    Candidat(string nume, int varsta, int experienta, int nrAplicatii, vector<int> aplicatiiId);
+    Candidat(string nume, int varsta, int experienta, vector<int> aplicatiiId);
 
     ~Candidat();
     string getNume() const;
     int getVarsta() const;
     int getExperienta() const;
-    int getNrAplicatii() const;
     vector<int> getAplicatiiId() const;
 };
 

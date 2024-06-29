@@ -31,24 +31,24 @@ void saveDataJob(const vector<Job>& jobs, const string& filename) {
     }
 }
 
-void saveDataCandidat(const vector<Job>& jobs, const string& filename) {
-    string directory = "./shared/files/";
-    string filePath = directory + filename;
+// void saveDataCandidat(const vector<Job>& jobs, const string& filename) {
+//     string directory = "./shared/files/";
+//     string filePath = directory + filename;
 
-    ofstream file(filePath);
-            // file << job.getNrCandidati() << " ";
-            // for (const auto& candidat : job.getCandidati()) {
-            //     file << candidat.getNume() << " "
-            //          << candidat.getVarsta() << " "
-            //          << candidat.getExperienta() << " "
-            //          << candidat.getNrAplicatii() << " ";
-            //     for (const auto& aplicatieId : candidat.getAplicatiiId()) {
-            //         file << aplicatieId << " ";
-            //     }
-            // }
-            // file << endl;
+//     ofstream file(filePath);
+//     // file << job.getNrCandidati() << " ";
+//     // for (const auto& candidat : job.getCandidati()) {
+//     //     file << candidat.getNume() << " "
+//     //          << candidat.getVarsta() << " "
+//     //          << candidat.getExperienta() << " "
+//     //          << candidat.getNrAplicatii() << " ";
+//     //     for (const auto& aplicatieId : candidat.getAplicatiiId()) {
+//     //         file << aplicatieId << " ";
+//     //     }
+//     // }
+//     // file << endl;
 
-}
+// }
 
 vector<Job> loadJobs(const string& filename) {
     string directory = "./shared/files/";
@@ -84,7 +84,7 @@ void adaugare_job(vector<Job>& jobs, int id, const string& compania, const strin
     saveDataJob(jobs, "jobs.txt");
 }
 
-void stergere_job(vector<Job>& jobs, int id, bool shoouldSave) {
+void stergere_job(vector<Job>& jobs, int id) {
     auto it = std::find_if(jobs.begin(), jobs.end(), [id](const Job& job) {
         return job.getId() == id;
     });
@@ -95,9 +95,7 @@ void stergere_job(vector<Job>& jobs, int id, bool shoouldSave) {
         cout << "Job with ID " << id << " not found." << endl;
     }
 
-    if(shoouldSave) {
-        saveDataJob(jobs, "jobs.txt");
-    }
+    saveDataJob(jobs, "jobs.txt");
 }
 
 void modificare_job(vector<Job>& jobs, int id, const string& field, const string& new_value) {
@@ -105,8 +103,6 @@ void modificare_job(vector<Job>& jobs, int id, const string& field, const string
     auto it = find_if(jobs.begin(), jobs.end(), [id](const Job& job) { return job.getId() == id; });
 
     if (it != jobs.end()) {
-        // Delete the job
-        stergere_job(jobs, id, 0);
 
         if (field == "nume") {
             it->setCompania(new_value);
@@ -122,10 +118,8 @@ void modificare_job(vector<Job>& jobs, int id, const string& field, const string
             return;
         }
 
-        // Add the modified job
-        adaugare_job(jobs, it->getId(), it->getCompania(), it->getPozitia(), it->getExperienta(), it->getSkills());
-
         saveDataJob(jobs, "jobs.txt");
+
     } else {
         cout << "Job was not found to change." << endl;
     }
@@ -163,7 +157,7 @@ int main(int argc, char *argv[]) // g++ -Wall -o p app1.cpp
         modificare_job(jobs, stoi(argv[2]), argv[3], argv[4]);
     }
     else if (command == "stergere_job" && argc == 3) {
-        stergere_job(jobs, stoi(argv[2]), 1);
+        stergere_job(jobs, stoi(argv[2]));
     } else if (command == "apply_job" && argc == 4) {
 
     } else {
