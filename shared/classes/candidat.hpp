@@ -12,14 +12,18 @@ private:
     int varsta;
     int experienta;
     int nrAplicatii;
-    vector<int> aplicatiiId; // aici o sa fie id-urile de la joburi in loc de referinta la Joburi, precum: "Jobs aplicatii"
-    // (ca sa nu avem dependenta ciclica despre care vorbea profesorul ca ar fi bine sa o evitam)
+    vector<int> aplicatiiId;
 public:
     Candidat();
 
     Candidat(string nume, int varsta, int experienta, int nrAplicatii, vector<int> aplicatiiId);
 
     ~Candidat();
+    string getNume() const;
+    int getVarsta() const;
+    int getExperienta() const;
+    int getNrAplicatii() const;
+    vector<int> getAplicatiiId() const;
 };
 
 #endif

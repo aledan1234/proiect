@@ -23,6 +23,7 @@ public:
 
     ~Job();
 
+    // getters
     int getId() const;
     string getCompania() const;
     string getPozitia() const;
@@ -30,34 +31,12 @@ public:
     vector<string> getSkills() const;
     int getNrCandidati() const;
     vector<Candidat> getCandidati() const;
+
+    // setters
+    void setCompania(const string compania);
+    void setPozitia(const string pozitia);
+    void setExperienta(const int experienta);
+    void addSkill(const string& skill);
 };
-
-#endif
-
-
-// old code bellow
-
-/*
-struct Job {
-    int id;
-    string compania;
-    string pozitia;
-    int experienta;
-    vector<string> skills;
-};
-
-struct Application {
-    int jobId;
-    string applicantName;
-};
-
-vector<Job> loadJobs(const string& filename);
-
-void displayJobs(const vector<Job>& jobs);
-
-vector<Job> filterJobsBySkill(const vector<Job>& jobs, const string& skill);
-
-void applyForJob(const string& filename, int jobId, const string& applicantName);
-*/
 
 #endif

@@ -1,23 +1,7 @@
 #include "jobs.hpp"
-/*
-Jobs::Jobs(int id, string compania, string pozitia, int experienta, vector<string> skills, int nrCandidati, Candidat candidati[])
-: id(id), compania(compania), pozitia(pozitia), skills(skills), experienta(experienta), nrCandidati(nrCandidati) {
-
-    for(int i = 0; i < nrCandidati; i++) {
-        this->candidati[i] = candidati[i];
-    }
-
-}
-
-Jobs::~Jobs() {
-    //delete[] candidati;
-}
-*/
-//am schimbat jobs la job, nu stiu de ce, dar altfel da eroare la citire, ceva de suprapunere, nu s sigur
-#include "jobs.hpp"
 
 Job::Job(int id, string compania, string pozitia, int experienta, vector<string> skills, int nrCandidati, Candidat candidati[])
-: id(id), compania(compania), pozitia(pozitia), skills(skills), experienta(experienta), nrCandidati(nrCandidati) {
+: id(id), compania(compania), pozitia(pozitia), experienta(experienta), skills(skills), nrCandidati(nrCandidati) {
 
     for(int i = 0; i < nrCandidati; ++i) {
         this->candidati[i] = candidati[i];
@@ -28,6 +12,8 @@ Job::Job(int id, string compania, string pozitia, int experienta, vector<string>
 Job::~Job() {
     //delete[] candidati;
 }
+
+// getters
 
 int Job::getId() const {
     return id;
@@ -55,4 +41,22 @@ int Job::getNrCandidati() const {
 
 vector<Candidat> Job::getCandidati() const {
     return vector<Candidat>(candidati, candidati + nrCandidati);
+}
+
+// setters
+
+void Job::setCompania(const string comp) {
+    compania = comp;
+}
+
+void Job::setPozitia(const string poz) {
+    pozitia = poz;
+}
+
+void Job::setExperienta(const int exp) {
+    experienta = exp;
+}
+
+void Job::addSkill(const string& skill) {
+    skills.push_back(skill);
 }
