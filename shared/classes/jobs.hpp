@@ -23,6 +23,7 @@ public:
 
     ~Job();
 
+    // getters
     int getId() const;
     string getCompania() const;
     string getPozitia() const;
@@ -30,6 +31,12 @@ public:
     vector<string> getSkills() const;
     int getNrCandidati() const;
     vector<Candidat> getCandidati() const;
+
+    // setters
+    void setCompania(const string compania);
+    void setPozitia(const string pozitia);
+    void setExperienta(const int experienta);
+    void addSkill(const string& skill);
 };
 
 #endif

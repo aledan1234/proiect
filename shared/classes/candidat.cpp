@@ -10,3 +10,23 @@ Candidat::Candidat(string nume, int varsta, int experienta, int nrAplicatii, vec
 Candidat::~Candidat() {
     //
 }
+
+string Candidat::getNume() const {
+    return nume;
+}
+
+int Candidat::getVarsta() const {
+    return varsta;
+}
+
+int Candidat::getExperienta() const {
+    return experienta;
+}
+
+int Candidat::getNrAplicatii() const {
+    return nrAplicatii;
+}
+
+vector<int> Candidat::getAplicatiiId() const {
+    return aplicatiiId;
+}

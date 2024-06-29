@@ -13,6 +13,8 @@ Job::~Job() {
     //delete[] candidati;
 }
 
+// getters
+
 int Job::getId() const {
     return id;
 }
@@ -39,4 +41,22 @@ int Job::getNrCandidati() const {
 
 vector<Candidat> Job::getCandidati() const {
     return vector<Candidat>(candidati, candidati + nrCandidati);
+}
+
+// setters
+
+void Job::setCompania(const string comp) {
+    compania = comp;
+}
+
+void Job::setPozitia(const string poz) {
+    pozitia = poz;
+}
+
+void Job::setExperienta(const int exp) {
+    experienta = exp;
+}
+
+void Job::addSkill(const string& skill) {
+    skills.push_back(skill);
 }

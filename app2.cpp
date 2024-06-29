@@ -10,8 +10,10 @@
 using namespace std;
 
 vector<Job> loadJobs(const string& filename) {
+    string directory = "./shared/files/";
+    string filePath = directory + filename;
     vector<Job> jobs;
-    ifstream file(filename);
+    ifstream file(filePath);
     /*
     if (file.is_open()) {
         int id;
@@ -52,7 +54,7 @@ vector<Job> loadJobs(const string& filename) {
 
 void displayJobs(const vector<Job>& jobs) {
     for (const auto& job : jobs) {
-        cout << "Job ID: " << job.getId() << ", Company: " << job.getCompania() << ", Position: " << job.getPozitia() << endl;
+        cout << "Job ID: " << job.getId() << ", Company: " << job.getCompania() << ", Position: " << job.getPozitia() << ", Experienta: " << job.getExperienta() << " ani" << endl;
         cout << "Skills: ";
         for (const auto& skill : job.getSkills()) {
             cout << skill << " ";
@@ -100,8 +102,8 @@ int main(int argc, char* argv[]) {
         displayJobs(jobs);
     } else if (command == "filter_jobs" && argc == 3) {
         string skill = argv[2];
-        vector<Job> filteredJobs = filterJobsBySkill(jobs, skill);
-        displayJobs(filteredJobs);
+        // vector<Job> filteredJobs = filterJobsBySkill(jobs, skill);
+        // displayJobs(filteredJobs);
     } else if (command == "apply_job" && argc == 4) {
         int jobId = stoi(argv[2]);
         string applicantName = argv[3];
