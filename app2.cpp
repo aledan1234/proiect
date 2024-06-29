@@ -107,7 +107,7 @@ int main(int argc, char* argv[]) {
     } else if (command == "apply_job" && argc == 4) {
         int jobId = stoi(argv[2]);
         string applicantName = argv[3];
-        applyForJob("applications.txt", jobId, applicantName);
+        applyForJob("candidati.txt", jobId, applicantName);
     } else {
         cout << "Invalid command or arguments." << endl;
     }
