@@ -14,24 +14,7 @@ vector<Job> loadJobs(const string& filename) {
     string filePath = directory + filename;
     vector<Job> jobs;
     ifstream file(filePath);
-    /*
-    if (file.is_open()) {
-        int id;
-        string title;
-        int numSkills;
-        while (file >> id >> title >> numSkills) {
-            Job job;
-            job.id = id;
-            job.title = title;
-            for (int i = 0; i < numSkills; ++i) {
-                string skill;
-                file >> skill;
-                job.skills.push_back(skill);
-            }
-            jobs.push_back(job);
-        }
-        file.close();
-    }*/
+
     if (file.is_open()) {
         int id;
         string compania, pozitia, title;
@@ -66,7 +49,8 @@ void displayJobs(const vector<Job>& jobs) {
 vector<Job> filterJobsBySkill(const vector<Job>& jobs, const string& skill) { //app.exe filter_jobs C++ sau g++ -o app filter_jobs
     vector<Job> filteredJobs;
     for (const auto& job : jobs) {
-        if (find(job.getSkills().begin(), job.getSkills().end(), skill) != job.getSkills().end()) {
+        vector<string> jobSkills = job.getSkills();
+        if (find(jobSkills.begin(), jobSkills.end(), skill) != jobSkills.end()) {
             filteredJobs.push_back(job);
         }
     }
@@ -102,8 +86,8 @@ int main(int argc, char* argv[]) {
         displayJobs(jobs);
     } else if (command == "filter_jobs" && argc == 3) {
         string skill = argv[2];
-        // vector<Job> filteredJobs = filterJobsBySkill(jobs, skill);
-        // displayJobs(filteredJobs);
+        vector<Job> filteredJobs = filterJobsBySkill(jobs, skill);
+        displayJobs(filteredJobs);
     } else if (command == "apply_job" && argc == 4) {
         int jobId = stoi(argv[2]);
         string applicantName = argv[3];
